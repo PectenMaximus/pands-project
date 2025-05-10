@@ -68,14 +68,19 @@ virginica_data = virginica_data.drop('Id', axis=1)
 virginica_summary = virginica_data.describe()
 print(virginica_summary)
 
-# Read Iris Dataset
-#IrisData = pd.read_csv('IrisDataset.csv')
+# Load the dataset
+IrisData = pd.read_csv("IrisDataset.csv")
 
-# Get the first 5 rows using head()
-#iris_head = IrisData.head()
+# Generate summary 
+summary = IrisData.describe()
 
-# Define the path where you want to save the text file (COME BACK AND FIX FILE NOT VISIBLE IN FOLDER)
-#save_path = r'C:\AlecProjects\pands-project\Images for Notebook\iris_head_output.txt'
+# Save the summary to a text file
+with open("iris_summary.txt", "w") as f:
+    f.write("Summary of Iris Dataset Variables:\n\n")
+    f.write(summary.to_string())
+
+# Define the path where you want to save the text file
+save_path = r'C:\AlecProjects\pands-project\Images for Notebook\iris_summary.txt'
 
 # Create a variable for each species that fileters the data based on species name
 setosa_data = df[df['Species'] == 'Iris-setosa']
